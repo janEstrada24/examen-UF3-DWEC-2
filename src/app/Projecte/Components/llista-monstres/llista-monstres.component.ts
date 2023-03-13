@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { catchError, take, throwError } from 'rxjs';
 import { DungeonsAndDragonsApiService } from 'src/app/Projecte/Services/API/dungeons-and-dragons/dungeons-and-dragons-api.service';
 
 @Component({
@@ -13,14 +14,21 @@ export class LlistaMonstresComponent implements OnInit {
   constructor(private httpClient: DungeonsAndDragonsApiService) { }
 
   ngOnInit(): void {
-    this.getMonstres();
+    this.getMonstres
   }
 
   getMonstres() {
-    this.httpClient.getDungeonsAndDragons().subscribe(
+    this.httpClient
+    .getDungeonsAndDragons()
+    .pipe(
+      take(1),
+      catchError((err: any) => {
+        return throwError(() => new Error("No s'ha pogut obtenir la informació."));
+      })
+    )
+    .subscribe(
       response => {
-        
-        this.monstres = response;
+        this.monstres = response.results;
         console.log(this.monstres);
       }
     );
