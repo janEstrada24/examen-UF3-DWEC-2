@@ -1,0 +1,30 @@
+<h3>Llista de monstres Dungeons and Dragons</h3>
+
+<button>Veure Dades</button>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Acció</th>
+    </tr>
+    <tr *ngFor="let monstre of this.monstres">
+        <td>{{monstre.index}}</td>
+        <td>
+            <img src="/src/assets/rodaDentada.png" alt="type">
+            <input type="checkbox" name="type" value="type">
+        </td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Subtype</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
