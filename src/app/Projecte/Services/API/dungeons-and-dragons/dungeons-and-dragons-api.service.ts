@@ -9,7 +9,15 @@ export class DungeonsAndDragonsApiService {
 
   constructor(private http: HttpClient) { }
 
-  getDungeonsAndDragons(): Observable<any> {
+  getDungeonsAndDragonsMonsters(): Observable<any> {
     return this.http.get('https://www.dnd5eapi.co/api/monsters/');
+  }
+
+  getDungeonsAndDragonsLegendaryActions(): Observable<any> {
+    return this.http.get('https://www.dnd5eapi.co/api/monsters/legendary-actions/');
+  }
+  
+  getImatgeMonstre(index: string): Observable<any> {
+    return this.http.get('https://www.dnd5eapi.co/api/monsters/' + index);
   }
 }

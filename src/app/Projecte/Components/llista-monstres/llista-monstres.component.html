@@ -1,30 +1,36 @@
 <h3>Llista de monstres Dungeons and Dragons</h3>
 
-<button>Veure Dades</button>
+<button (click)="getLegendaryActions()" >Veure Dades</button>
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Acció</th>
-    </tr>
-    <tr *ngFor="let monstre of this.monstres">
-        <td>{{monstre.name}}</td>
-        <td>
-            <img src="/assets/rodaDentada.png">
-            <input type="checkbox" name="type" value="type">
-        </td>
-    </tr>
-</table>
-
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Subtype</th>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
+<div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Acció</th>
+        </tr>
+        <tr *ngFor="let monstre of this.monstres">
+            <td>{{monstre.name}}</td>
+            <td>
+                <img (click)="veureImatge(monstre.index)" src="/assets/rodaDentada.png">
+                <input type="checkbox" (click)="afegirMonstre(monstre)" (click)="treureMonstre(monstre)"  name="type" value="type">
+            </td>
+        </tr>
+    </table>
+    
+    <div>
+        <img src="{{this.urlImatge}}" alt="imatgeMonstre">
+    </div>
+    
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Subtype</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
